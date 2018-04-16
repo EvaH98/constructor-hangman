@@ -8,7 +8,7 @@ var Word = function() {
 	this.shownWord = [];
 	this.attempt = this.word.split("").length - 2;
 
-		this.render = function() {
+		this.converted = function() {
 		this.wordArray = this.word.split("");
 			for(var i = 0; i < this.wordArray.length; i++){
 				this.wordArray[i] = new Letter(this.wordArray[i]);
