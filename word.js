@@ -7,17 +7,48 @@ var Word = function() {
 	this.hiddenWord = [];
 	this.shownWord = [];
 	this.attempt = this.word.split("").length - 2;
-	this.render = function() {
+
+		this.render = function() {
 		this.wordArray = this.word.split("");
-		for(var i = 0; i < this.wordArray.length; i++){
-			this.wordArray[i] = new Letter(this.wordArray[i]);
-			if(this.wordArray[i].letter === " "){
-				this.hiddenWord.push(this.wordArray[i].letter);	
-			}else{
-				this.hiddenWord.push(this.wordArray.hide());
+			for(var i = 0; i < this.wordArray.length; i++){
+				this.wordArray[i] = new Letter(this.wordArray[i]);
+				if(this.wordArray[i].letter === " "){
+					this.hiddenWord.push(this.wordArray[i].letter);	
+				}else{
+					this.hiddenWord.push(this.wordArray.hide());
+				}
+			}
+		this.shownWord = this.hiddenWord.join(" ");
+		return this.shownWord;
+		};
+
+	this.letterCheck = function(letter){
+		var match = false
+
+		for (var i = 0; i < this.wordArray.length; i++){
+			if(this.wordArray[i].letter.toLowerCase() === letter){
+				match = true;
 			}
 		}
-	}
-	this.shownWord = this.hiddenWord.join(" ");
-	return this.shownWord;
+
+		if (match){
+			for (var j = 0; j <this.wordArray.length; j++){
+
+				if(this.wordArray[j].letter.toLowerCase() === letter){
+					this.hiddenWord[j] = this.wordArray[j].letter;
+				}
+			}
+
+			this.shownWord = this.hiddenWord.join(" ");
+			console.log("\nYAY! THAT CORRECT!\n");
+		} else {
+			this.attempt -= 1;
+			console.log("\nSorry...you didn't get it\n");
+			console.log("You have " + this.attempt + "attempts remaining\n");	
+		}
+
+		return this.shownWord;
+	};	
 };
+
+module.exports = Word;
