@@ -10,3 +10,5 @@ Using `inquirer` npm package users simply type a the letter of their choosing an
 <img src="http://i68.tinypic.com/244p1mo.png">
 
 <img src="http://i66.tinypic.com/34gx75k.png">
+
+<img src="http://i63.tinypic.com/2410cj4.png">
