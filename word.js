@@ -8,21 +8,22 @@ var Word = function() {
 	this.shownWord = [];
 	this.attempt = this.word.split("").length - 2;
 
-		this.converted = function() {
+	this.converted = function() {
 		this.wordArray = this.word.split("");
 			for(var i = 0; i < this.wordArray.length; i++){
 				this.wordArray[i] = new Letter(this.wordArray[i]);
+
 				if(this.wordArray[i].letter === " "){
 					this.hiddenWord.push(this.wordArray[i].letter);	
 				}else{
-					this.hiddenWord.push(this.wordArray.hide());
+					this.hiddenWord.push(this.wordArray[i].hide());
 				}
 			}
 		this.shownWord = this.hiddenWord.join(" ");
 		return this.shownWord;
 		};
 
-	this.letterCheck = function(letter){
+	this.checkLetter = function(letter){
 		var match = false
 
 		for (var i = 0; i < this.wordArray.length; i++){
@@ -44,7 +45,7 @@ var Word = function() {
 		} else {
 			this.attempt -= 1;
 			console.log("\nSorry...you didn't get it\n");
-			console.log("You have " + this.attempt + "attempts remaining\n");	
+			console.log("You have " + this.attempt + " attempts remaining\n");	
 		}
 
 		return this.shownWord;

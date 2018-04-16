@@ -34,7 +34,23 @@ function question() {
 		if(answer.quit === true){
 			process.exit();
 		} else{
-			return newGame();
+			return startGame();
 		}
 	});
 }
+
+function checkWin(word, attempt){
+	var hiddenLetter = word.includes("_");
+
+	if(attempt === 0){
+		console.log("\nYou're out! Better luck next time!\n");
+		return question();
+	} else if(!hiddenLetter){
+		console.log("\nYAY!!! YOU WON!!!!\n");
+		return question();
+	} else{
+		game();
+	}
+}
+
+startGame();
