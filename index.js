@@ -11,12 +11,30 @@ function startGame(){
 
 function game() {
 	inquirer.prompt([
+	{
 		type: "input",
 		name: "userGuess",
-		message: "Choose a letter!",
-		]).them(function(guess){
+		message: "Choose a letter!"
+	}
+	]).then(function(guess){
 			var guess = guess.userGuess;
 			console.log(word.checkLetter(guess));
 			checkWin(word.hiddenWord, word.attempt);
-		})
+	});
+}
+
+function question() {
+	inquirer.prompt([
+	{
+		type:"confirm",
+		name: "quit",
+		message: "Do you wish to quit?"
+	}
+	]).then(function(answer){
+		if(answer.quit === true){
+			process.exit();
+		} else{
+			return newGame();
+		}
+	});
 }
