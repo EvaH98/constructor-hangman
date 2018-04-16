@@ -1,7 +1,7 @@
 var Letter = function(letter){
 	this.letter = letter;
 	this.hide = function(){
-		letter ="_";
+		letter = "_";
 		return letter;
 	};
 };
